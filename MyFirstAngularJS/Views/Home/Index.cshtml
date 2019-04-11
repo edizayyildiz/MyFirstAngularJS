@@ -1,8 +1,40 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<head>
+    <title>My First AngularJS Application</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<html>
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <p>Input something in the input box:</p>
+        <p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+        <p>Surname : <input type="text" ng-model="surname" placeholder="Enter surname here"></p>
+        <h1>Hello {{name}} {{surname}}</h1>
+
+        <h1 ng-click="changeName()">{{firstname}}</h1>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.firstname = "John";
+            $scope.changeName = function () {
+                if ($scope.firstname == "John") {
+                    $scope.firstname = "Nelly";
+                }
+                else {
+                    $scope.firstname = "John";
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
+
